@@ -15,6 +15,7 @@ knit        : slidify::knit2slides
 1. Standard Deviation
 2. Statistical Significance 
 3. Linear Regression
+4. Evaluating a Model 
 
 --- &twocol
 
@@ -60,39 +61,6 @@ Standard Deviation: 60
   * 177 activations?
   * 300 activations?
   * 13 activations?
-
---- &interactive
-## Exploring SD
-
-
-```r
-require(googleVis)
-```
-
-```
-## Loading required package: googleVis
-```
-
-```
-## Warning in library(package, lib.loc = lib.loc, character.only = TRUE,
-## logical.return = TRUE, : there is no package called 'googleVis'
-```
-
-```r
-M1 <- gvisMotionChart(Fruits, idvar = 'Fruit', timevar = 'Year')
-```
-
-```
-## Error in eval(expr, envir, enclos): could not find function "gvisMotionChart"
-```
-
-```r
-print(M1, tag = 'chart')
-```
-
-```
-## Error in print(M1, tag = "chart"): object 'M1' not found
-```
 
 --- .class #id 
 ## Statistical Significance
@@ -163,22 +131,22 @@ Which if any results should we care about?
 
 *** =left
 
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3-1.png) 
 
 *** =right
 
-![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5-1.png) 
+![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-1.png) 
 
 --- &twocol
 ## Linear Regression
 
 *** =left
 
-![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6-1.png) 
+![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5-1.png) 
 
 *** =right
 
-![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7-1.png) 
+![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6-1.png) 
 
 --- .class #id 
 
@@ -250,6 +218,16 @@ A one unit change in X1 will, on average,
 be associating with a &beta;1 * 100 percent 
 change in Y.
 
+
+--- .class #id 
+## Evaluating a Model
+
+* Statistical and practical significance of coefficients of interest
+* Coefficients of interest robust to multiple specifications
+* Results robust to multipe samples
+* Goodness of Fit
+* Predictive Power
+
 --- &twocol 
 ## Possible Future Topics
 
@@ -269,7 +247,6 @@ change in Y.
 *** =right
 * A/B Testing
   * Importance of pre-defined criteria
-  * No Peaking
   * Danger of repeated testing
   * Low Base Rate / Skewed Distribution (eg. conversions)
 

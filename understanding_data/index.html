@@ -53,6 +53,7 @@
 <li>Standard Deviation</li>
 <li>Statistical Significance </li>
 <li>Linear Regression</li>
+<li>Evaluating a Model </li>
 </ol>
 
   </article>
@@ -150,68 +151,6 @@ Standard Deviation: 60
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-6" style="background:;">
-  <hgroup>
-    <h2>Exploring SD</h2>
-  </hgroup>
-  <article data-timings="">
-     
-<div class='row-fluid'>
-  <div class='span5'>
-    <form id="knitForm6" data-cell="6">
-      <pre><code class="r">require(googleVis)
-</code></pre>
-
-<pre><code>## Loading required package: googleVis
-</code></pre>
-
-<pre><code>## Warning in library(package, lib.loc = lib.loc, character.only = TRUE,
-## logical.return = TRUE, : there is no package called &#39;googleVis&#39;
-</code></pre>
-
-<pre><code class="r">M1 &lt;- gvisMotionChart(Fruits, idvar = &#39;Fruit&#39;, timevar = &#39;Year&#39;)
-</code></pre>
-
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;gvisMotionChart&quot;
-</code></pre>
-
-<pre><code class="r">print(M1, tag = &#39;chart&#39;)
-</code></pre>
-
-<pre><code>## Error in print(M1, tag = &quot;chart&quot;): object &#39;M1&#39; not found
-</code></pre>
-
-      <div id='aceeditor6' style="height:px;"></div>
-      <div class='interactive btn-toolbar pull-left'>
-        <div class='btn-group'>
-          <a class='btn btn-small action-button' id='runCode6' data-action='runCode'
-            data-cell='6' rel='tooltip' data-title='Run Code'>
-            <i class='icon-play'></i>
-          </a>
-          <a class='btn btn-small iBtn' id='testCode6' data-action='testCode'
-             data-cell='6' rel='tooltip' data-title='Test Code'>
-            <i class='icon-check'></i>
-          </a>
-          <a class='btn btn-small iBtn' id='clearResult6' data-action='clearResult'
-             data-cell='6' rel='tooltip' data-title='Clear Output'>
-            <i class="icon-remove"></i>
-          </a>
-          <a class='btn  btn-small iBtn' id='getHint6' rel='tooltip' 
-            data-title="Get Hint" data-action='getHint'
-            data-cell='6' data-hint="">
-            <i class="icon-bookmark"></i>
-          </a>
-        </div>
-      </div>    </form>
-  </div>
-  <div class='span7'>
-    <iframe id="knitResult6" class='shiny-html-output'></iframe>
-  </div>
-</div>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
 <slide class="class" id="id" style="background:;">
   <hgroup>
     <h2>Statistical Significance</h2>
@@ -304,6 +243,24 @@ but you got data suggesting there is.&quot;
   <!-- Presenter Notes -->
 </slide>
 
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Linear Regression</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/fig/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"> </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"> </p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
 <slide class="" id="slide-10" style="background:;">
   <hgroup>
     <h2>Linear Regression</h2>
@@ -311,29 +268,11 @@ but you got data suggesting there is.&quot;
   <article data-timings="">
     
 <div style='float:left;width:48%;' class='centered'>
-  <p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"> </p>
-
-</div>
-<div style='float:right;width:48%;'>
   <p><img src="assets/fig/unnamed-chunk-5-1.png" alt="plot of chunk unnamed-chunk-5"> </p>
 
 </div>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-11" style="background:;">
-  <hgroup>
-    <h2>Linear Regression</h2>
-  </hgroup>
-  <article data-timings="">
-    
-<div style='float:left;width:48%;' class='centered'>
-  <p><img src="assets/fig/unnamed-chunk-6-1.png" alt="plot of chunk unnamed-chunk-6"> </p>
-
-</div>
 <div style='float:right;width:48%;'>
-  <p><img src="assets/fig/unnamed-chunk-7-1.png" alt="plot of chunk unnamed-chunk-7"> </p>
+  <p><img src="assets/fig/unnamed-chunk-6-1.png" alt="plot of chunk unnamed-chunk-6"> </p>
 
 </div>
   </article>
@@ -445,6 +384,23 @@ change in Y.</p>
   <!-- Presenter Notes -->
 </slide>
 
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Evaluating a Model</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Statistical and practical significance of coefficients of interest</li>
+<li>Coefficients of interest robust to multiple specifications</li>
+<li>Results robust to multipe samples</li>
+<li>Goodness of Fit</li>
+<li>Predictive Power</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
 <slide class="" id="slide-16" style="background:;">
   <hgroup>
     <h2>Possible Future Topics</h2>
@@ -478,7 +434,6 @@ change in Y.</p>
 
 <ul>
 <li>Importance of pre-defined criteria</li>
-<li>No Peaking</li>
 <li>Danger of repeated testing</li>
 <li>Low Base Rate / Skewed Distribution (eg. conversions)</li>
 </ul></li>
@@ -534,7 +489,7 @@ change in Y.</p>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Exploring SD'>
+        data-slide=6 title='Statistical Significance'>
          6
       </a>
     </li>
@@ -552,7 +507,7 @@ change in Y.</p>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Statistical Significance'>
+        data-slide=9 title='Linear Regression'>
          9
       </a>
     </li>
@@ -588,7 +543,7 @@ change in Y.</p>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Linear Regression'>
+        data-slide=15 title='Evaluating a Model'>
          15
       </a>
     </li>

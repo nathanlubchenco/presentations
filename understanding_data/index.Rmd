@@ -15,6 +15,7 @@ knit        : slidify::knit2slides
 1. Standard Deviation
 2. Statistical Significance 
 3. Linear Regression
+4. Evaluating a Model 
 
 --- &twocol
 
@@ -217,6 +218,16 @@ A one unit change in X1 will, on average,
 be associating with a &beta;1 * 100 percent 
 change in Y.
 
+
+--- .class #id 
+## Evaluating a Model
+
+* Statistical and practical significance of coefficients of interest
+* Coefficients of interest robust to multiple specifications
+* Results robust to multipe samples
+* Goodness of Fit
+* Predictive Power
+
 --- &twocol 
 ## Possible Future Topics
 
@@ -236,7 +247,6 @@ change in Y.
 *** =right
 * A/B Testing
   * Importance of pre-defined criteria
-  * No Peaking
   * Danger of repeated testing
   * Low Base Rate / Skewed Distribution (eg. conversions)
 

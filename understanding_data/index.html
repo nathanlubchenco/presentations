@@ -53,7 +53,6 @@
 <li>Standard Deviation</li>
 <li>Statistical Significance </li>
 <li>Linear Regression</li>
-<li>Evaluating a Model </li>
 </ol>
 
   </article>
@@ -92,6 +91,23 @@
 <li>99% of data is within 3 standard deviations of the mean</li>
 </ul>
 
+<p><img src="assets/img/std_dev.png" alt="std-dev_graph" title="Standard Deviation Visualization"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Standard Deviation</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Common Mistake</h3>
+
+<p>Not all data is normally distributed</p>
+
+<p><img src="assets/fig/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"> </p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -104,21 +120,20 @@
     <h3>Use cases</h3>
 
 <ul>
-<li>Filtering Outliers
+<li><p>Filtering Outliers</p>
 
 <ul>
 <li>For EE calcs we filter out any day where usage is greater than 4 standard deviations away from the mean</li>
 </ul></li>
-<li>Detecting Data Descrepencies
+<li><p>Detecting Data Descrepencies</p>
 
 <ul>
 <li>Data Ingestion -- usage, number of accounts</li>
 </ul></li>
-<li>Thinking about the shape of data
+<li><p>Estimating Trends</p>
 
 <ul>
-<li>High Standard Deviation indicates high fluxuations / volatilty </li>
-<li>Low Standard Deviation indicates consistently similar results</li>
+<li>Is this data likely due to a genuine change or is it explainable by noise</li>
 </ul></li>
 </ul>
 
@@ -152,6 +167,14 @@ Standard Deviation: 60
 </slide>
 
 <slide class="class" id="id" style="background:;">
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
   <hgroup>
     <h2>Statistical Significance</h2>
   </hgroup>
@@ -161,19 +184,30 @@ Standard Deviation: 60
 </code></pre>
 
 <ol>
-<li>Type I Error: 
+<li>False Positive: 
 
 <ul>
-<li>False Positive</li>
+<li>Type I Error </li>
 <li>the null hypothesis is true, but we reject it and believe something false</li>
 </ul></li>
-<li>Type II Error: 
+<li>False Negative:
 
 <ul>
-<li>False Negative</li>
+<li>Type II Error </li>
 <li>the null hypothesis is false, but we fail to reject it and do not believe something true</li>
 </ul></li>
 </ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Statistical Significance</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>In a trial, the null hypothesis is that there is no relationship between the person and the crime:</p>
 
 <p>What type of error is it if an innocent person is convicted?</p>
 
@@ -192,10 +226,10 @@ Standard Deviation: 60
 <li><p>Beyond a reasonable doubt</p>
 
 <ul>
-<li>makes Type I errors less likely</li>
-<li>conversely, increases the likelihood of Type II errors</li>
+<li>makes false positive less likely</li>
+<li>conversely, increases the likelihood of false negatives </li>
 </ul></li>
-<li><p>a p-value allows us to control the probability of Type I errors</p>
+<li><p>a p-value allows us to control the probability of false positives </p>
 
 <ul>
 <li>by convention the threshold for statistical signficance is set to .05</li>
@@ -215,6 +249,24 @@ but you got data suggesting there is.&quot;
   <!-- Presenter Notes -->
 </slide>
 
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Statistical Significance</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/fig/unnamed-chunk-5-1.png" alt="plot of chunk unnamed-chunk-5"> </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="assets/fig/unnamed-chunk-6-1.png" alt="plot of chunk unnamed-chunk-6"> </p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
 <slide class="class" id="id" style="background:;">
   <hgroup>
     <h2>Statistical Significance</h2>
@@ -226,53 +278,82 @@ but you got data suggesting there is.&quot;
 
 <p>A series of A/B tests reveal:  </p>
 
-<pre><code>Feature X will, on average, increase a user&#39;s time on the engagement platform by 3%.
+<pre><code>Feature X will, on average, increase a user&#39;s pageviews by 3%.
 </code></pre>
 
-<pre><code>Feature Y will, on average, increase a user&#39;s energy savings by 3%.
+<pre><code>Feature Y will, on average, decrease a user&#39;s energy usage by 3%.
 </code></pre>
 
-<pre><code>Feature Z will, on average, decrease a user&#39;s energy usage by 3%.
-</code></pre>
+<p>Both results are highly statistically significant. (p value &lt; .001) </p>
 
-<p>All results are highly statistically significant. (p value &lt; .001) </p>
-
-<p>Which if any results should we care about?</p>
+<p>Which, if any, results should we care about?</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-9" style="background:;">
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Statistical Significance</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Common Mistake II</h3>
+
+<p>Interpreting results that are not statistically significant as if they still indicate &#39;something&#39;</p>
+
+<pre><code>For program X, we showed energy savings of %0.8,
+but the results were not statistically significant.
+</code></pre>
+
+<p>If results are not statistcally significant:</p>
+
+<ul>
+<li>they are indistinguishable from 0<br></li>
+<li>no trend is indicated</li>
+</ul>
+
+<p>It is ok to say that we don&#39;t know anything yet.</p>
+
+<p>Yes, this is hard.</p>
+
+<ul>
+<li>Ask for the why</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
   <hgroup>
     <h2>Linear Regression</h2>
   </hgroup>
   <article data-timings="">
     
 <div style='float:left;width:48%;' class='centered'>
-  <p><img src="assets/fig/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"> </p>
+  <p><img src="assets/fig/unnamed-chunk-7-1.png" alt="plot of chunk unnamed-chunk-7"> </p>
 
 </div>
 <div style='float:right;width:48%;'>
-  <p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"> </p>
+  <p><img src="assets/fig/unnamed-chunk-8-1.png" alt="plot of chunk unnamed-chunk-8"> </p>
 
 </div>
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-15" style="background:;">
   <hgroup>
     <h2>Linear Regression</h2>
   </hgroup>
   <article data-timings="">
     
 <div style='float:left;width:48%;' class='centered'>
-  <p><img src="assets/fig/unnamed-chunk-5-1.png" alt="plot of chunk unnamed-chunk-5"> </p>
+  <p><img src="assets/fig/unnamed-chunk-9-1.png" alt="plot of chunk unnamed-chunk-9"> </p>
 
 </div>
 <div style='float:right;width:48%;'>
-  <p><img src="assets/fig/unnamed-chunk-6-1.png" alt="plot of chunk unnamed-chunk-6"> </p>
+  <p><img src="assets/fig/unnamed-chunk-10-1.png" alt="plot of chunk unnamed-chunk-10"> </p>
 
 </div>
   </article>
@@ -293,15 +374,15 @@ y = mx + b</p>
 
 <h3>Regression Equation</h3>
 
-<p>y = &beta;0 + &beta;1*X1 + <em>e</em> </p>
+<p>y = &beta;0 + &beta;1*hp + <em>e</em> </p>
 
 <p>&beta;0 is the y-intercept 
-&beta;1 is the coefficient of X1</p>
+&beta;1 is the coefficient of hp </p>
 
 <h3>Interpreting the coefficient</h3>
 
-<p>A one unit change in X1 will, on average, 
-be associated with a &beta;1 change in Y.</p>
+<p>A one unit change in hp will, on average, 
+be associated with a &beta;1 change in mpg.</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -312,96 +393,50 @@ be associated with a &beta;1 change in Y.</p>
     <h2>Linear Regression</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code>## 
-## Call:
-## lm(formula = mpg ~ hp, data = mtcars)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -5.7121 -2.1122 -0.8854  1.5819  8.2360 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 30.09886    1.63392  18.421  &lt; 2e-16 ***
-## hp          -0.06823    0.01012  -6.742 1.79e-07 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 3.863 on 30 degrees of freedom
-## Multiple R-squared:  0.6024, Adjusted R-squared:  0.5892 
-## F-statistic: 45.46 on 1 and 30 DF,  p-value: 1.788e-07
+    <pre><code>##                Estimate Std. Error   t value     Pr(&gt;|t|)
+## (Intercept) 30.09886054  1.6339210 18.421246 6.642736e-18
+## hp          -0.06822828  0.0101193 -6.742389 1.787835e-07
 </code></pre>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="id" style="background:;">
+<slide class="" id="slide-18" style="background:;">
   <hgroup>
     <h2>Linear Regression</h2>
   </hgroup>
   <article data-timings="">
-    <h3>Recap</h3>
+    
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/fig/unnamed-chunk-12-1.png" alt="plot of chunk unnamed-chunk-12"> </p>
 
-<ul>
-<li>A coefficient measures the on average association of the independent variable with the dependent variable.</li>
-<li>The p-value measures how surpised we should be to get this data if there was no association between the independent variable and the dependent variable.</li>
-<li>Using a threshold of .05 for statistical significance means we are ok with committing a type I error on average 1 in 20 times. </li>
-</ul>
+</div>
+<div style='float:right;width:48%;'>
+  <p><img src="assets/fig/unnamed-chunk-13-1.png" alt="plot of chunk unnamed-chunk-13"> </p>
 
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Linear Regression</h2>
+    <h2>Prediction is hard</h2>
   </hgroup>
   <article data-timings="">
-    <h3>Applied to EE calcs</h3>
+    <p><img src="assets/img/flowing_data_japan_predictions.png" alt="japan-birth-rate-prediction" title="Birth Rate Predictions"></p>
 
-<ul>
-<li>(simplified EE regression equation)
+<pre><code>&quot;It&#39;s hard to predict the future, especially when humans are involved.&quot;
+</code></pre>
 
-<ul>
-<li>KWH = &beta;0 +  &beta;1*treatment + e </li>
-</ul></li>
-<li>Being in the treatment group is a dummy variable (0 or 1) </li>
-<li>The coefficient of that variable is the impact of our program on energy usage </li>
-</ul>
-
-<h3>A percentage interpretation</h3>
-
-<ul>
-<li>Log transforming the dependent variable allows:</li>
-</ul>
-
-<p>A one unit change in X1 will, on average, 
-be associating with a &beta;1 * 100 percent 
-change in Y.</p>
+<p><a href="http://flowingdata.com/2015/01/08/japan-fertility-rate-forecasts-versus-reality/">Flowing Data</a></p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="id" style="background:;">
-  <hgroup>
-    <h2>Evaluating a Model</h2>
-  </hgroup>
-  <article data-timings="">
-    <ul>
-<li>Statistical and practical significance of coefficients of interest</li>
-<li>Coefficients of interest robust to multiple specifications</li>
-<li>Results robust to multipe samples</li>
-<li>Goodness of Fit</li>
-<li>Predictive Power</li>
-</ul>
-
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-16" style="background:;">
+<slide class="" id="slide-20" style="background:;">
   <hgroup>
     <h2>Possible Future Topics</h2>
   </hgroup>
@@ -489,13 +524,13 @@ change in Y.</p>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Statistical Significance'>
+        data-slide=6 title='Standard Deviation'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Statistical Significance'>
+        data-slide=7 title=''>
          7
       </a>
     </li>
@@ -507,31 +542,31 @@ change in Y.</p>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Linear Regression'>
+        data-slide=9 title='Statistical Significance'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Linear Regression'>
+        data-slide=10 title='Statistical Significance'>
          10
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=11 title='Linear Regression'>
+        data-slide=11 title='Statistical Significance'>
          11
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=12 title='Linear Regression'>
+        data-slide=12 title='Statistical Significance'>
          12
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=13 title='Linear Regression'>
+        data-slide=13 title='Statistical Significance'>
          13
       </a>
     </li>
@@ -543,14 +578,38 @@ change in Y.</p>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=15 title='Evaluating a Model'>
+        data-slide=15 title='Linear Regression'>
          15
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=16 title='Possible Future Topics'>
+        data-slide=16 title='Linear Regression'>
          16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Linear Regression'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Linear Regression'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Prediction is hard'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Possible Future Topics'>
+         20
       </a>
     </li>
   </ul>

@@ -15,7 +15,6 @@ knit        : slidify::knit2slides
 1. Standard Deviation
 2. Statistical Significance 
 3. Linear Regression
-4. Evaluating a Model 
 
 --- &twocol
 
@@ -36,17 +35,30 @@ If the data is distributed approximately normal then:
 * 95% of data is within 2 standard deviations of the mean
 * 99% of data is within 3 standard deviations of the mean
 
+![std-dev_graph](assets/img/std_dev.png "Standard Deviation Visualization")
+
+--- .class #id 
+## Standard Deviation
+### Common Mistake
+
+Not all data is normally distributed
+
+![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3-1.png) 
+
+
+
 --- .class #id 
 ## Standard Deviation
 ### Use cases
 
 * Filtering Outliers
   * For EE calcs we filter out any day where usage is greater than 4 standard deviations away from the mean
+
 * Detecting Data Descrepencies
   * Data Ingestion -- usage, number of accounts
-* Thinking about the shape of data
-  * High Standard Deviation indicates high fluxuations / volatilty 
-  * Low Standard Deviation indicates consistently similar results
+
+* Estimating Trends
+  * Is this data likely due to a genuine change or is it explainable by noise
 
 --- .class #id 
 ## Standard Deviation
@@ -62,6 +74,11 @@ Standard Deviation: 60
   * 300 activations?
   * 13 activations?
 
+
+--- .class #id 
+
+![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-1.png) 
+
 --- .class #id 
 ## Statistical Significance
 
@@ -70,25 +87,30 @@ Null Hypothesis:
   Assumption that there is no relationship between variables of interest
 ```
 
-1. Type I Error: 
-   - False Positive
+1. False Positive: 
+   - Type I Error 
    - the null hypothesis is true, but we reject it and believe something false
-2. Type II Error: 
-   - False Negative
+2. False Negative:
+   - Type II Error 
    - the null hypothesis is false, but we fail to reject it and do not believe something true
 
-What type of error is it if an innocent person is convicted?
+--- .class #id 
+## Statistical Significance
 
-What type of error is it if a guilty person is acquitted? 
+In a trial, the null hypothesis is that there is no relationship between the person and the crime:
+
+  What type of error is it if an innocent person is convicted?
+
+  What type of error is it if a guilty person is acquitted? 
 
 --- .class #id 
 ## Statistical Significance 
 
 * Beyond a reasonable doubt
-   - makes Type I errors less likely
-   - conversely, increases the likelihood of Type II errors
+   - makes false positive less likely
+   - conversely, increases the likelihood of false negatives 
 
-* a p-value allows us to control the probability of Type I errors
+* a p-value allows us to control the probability of false positives 
    - by convention the threshold for statistical signficance is set to .05
 
 ```
@@ -100,6 +122,17 @@ but you got data suggesting there is."
 ```
 [statisticsdonewrong](http://www.statisticsdonewrong.com/data-analysis.html)
 
+---  &twocol
+## Statistical Significance 
+
+*** =left
+
+![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5-1.png) 
+
+*** =right
+
+![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6-1.png) 
+
 --- .class #id 
 ## Statistical Significance 
 
@@ -110,43 +143,59 @@ Confusing statistical significance with practical signficance
 A series of A/B tests reveal:  
 
 ```
-Feature X will, on average, increase a user's time on the engagement platform by 3%.
+Feature X will, on average, increase a user's pageviews by 3%.
 ```
 
 ```
-Feature Y will, on average, increase a user's energy savings by 3%.
+Feature Y will, on average, decrease a user's energy usage by 3%.
 ```
 
+Both results are highly statistically significant. (p value < .001) 
+
+Which, if any, results should we care about?
+
+--- .class #id 
+## Statistical Significance 
+
+### Common Mistake II
+
+Interpreting results that are not statistically significant as if they still indicate 'something'
+
 ```
-Feature Z will, on average, decrease a user's energy usage by 3%.
+For program X, we showed energy savings of %0.8,
+but the results were not statistically significant.
 ```
 
-All results are highly statistically significant. (p value < .001) 
+If results are not statistcally significant:
+* they are indistinguishable from 0  
+* no trend is indicated
 
-Which if any results should we care about?
+It is ok to say that we don't know anything yet.
 
+Yes, this is hard.
+* Ask for the why
 
 ---  &twocol
 ## Linear Regression
 
 *** =left
 
-![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3-1.png) 
+![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7-1.png) 
 
 *** =right
 
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-1.png) 
+![plot of chunk unnamed-chunk-8](assets/fig/unnamed-chunk-8-1.png) 
 
 --- &twocol
 ## Linear Regression
 
 *** =left
 
-![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5-1.png) 
+![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9-1.png) 
 
 *** =right
 
-![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6-1.png) 
+![plot of chunk unnamed-chunk-10](assets/fig/unnamed-chunk-10-1.png) 
 
 --- .class #id 
 
@@ -159,74 +208,45 @@ y = mx + b
 m is the slope, b is the y-intercept
 
 ### Regression Equation
-y = &beta;0 + &beta;1\*X1 + _e_ 
+y = &beta;0 + &beta;1\*hp + _e_ 
 
 &beta;0 is the y-intercept 
-&beta;1 is the coefficient of X1
+&beta;1 is the coefficient of hp 
 
 ### Interpreting the coefficient
-A one unit change in X1 will, on average, 
-be associated with a &beta;1 change in Y.
+A one unit change in hp will, on average, 
+be associated with a &beta;1 change in mpg.
 
 --- .class #id 
 
 ## Linear Regression
 
 ```
-## 
-## Call:
-## lm(formula = mpg ~ hp, data = mtcars)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -5.7121 -2.1122 -0.8854  1.5819  8.2360 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) 30.09886    1.63392  18.421  < 2e-16 ***
-## hp          -0.06823    0.01012  -6.742 1.79e-07 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 3.863 on 30 degrees of freedom
-## Multiple R-squared:  0.6024,	Adjusted R-squared:  0.5892 
-## F-statistic: 45.46 on 1 and 30 DF,  p-value: 1.788e-07
+##                Estimate Std. Error   t value     Pr(>|t|)
+## (Intercept) 30.09886054  1.6339210 18.421246 6.642736e-18
+## hp          -0.06822828  0.0101193 -6.742389 1.787835e-07
 ```
 
---- .class #id 
-
+--- &twocol
 ## Linear Regression
-### Recap
-* A coefficient measures the on average association of the independent variable with the dependent variable.
-* The p-value measures how surpised we should be to get this data if there was no association between the independent variable and the dependent variable.
-* Using a threshold of .05 for statistical significance means we are ok with committing a type I error on average 1 in 20 times. 
+
+*** =left
+
+![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-12-1.png) 
+
+*** =right
+
+![plot of chunk unnamed-chunk-13](assets/fig/unnamed-chunk-13-1.png) 
 
 --- .class #id 
+## Prediction is hard
 
-## Linear Regression
-### Applied to EE calcs 
+![japan-birth-rate-prediction](assets/img/flowing_data_japan_predictions.png "Birth Rate Predictions")
 
-* (simplified EE regression equation)
-  * KWH = &beta;0 +  &beta;1\*treatment + e 
-* Being in the treatment group is a dummy variable (0 or 1) 
-* The coefficient of that variable is the impact of our program on energy usage 
-
-### A percentage interpretation
-  * Log transforming the dependent variable allows:
-
-A one unit change in X1 will, on average, 
-be associating with a &beta;1 * 100 percent 
-change in Y.
-
-
---- .class #id 
-## Evaluating a Model
-
-* Statistical and practical significance of coefficients of interest
-* Coefficients of interest robust to multiple specifications
-* Results robust to multipe samples
-* Goodness of Fit
-* Predictive Power
+```
+"It's hard to predict the future, especially when humans are involved."
+```
+[Flowing Data](http://flowingdata.com/2015/01/08/japan-fertility-rate-forecasts-versus-reality/)
 
 --- &twocol 
 ## Possible Future Topics
